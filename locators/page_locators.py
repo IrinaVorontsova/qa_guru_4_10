@@ -8,10 +8,6 @@ class PageLocators:
     def set_day_birth(day):
         return f"react-datepicker__day--{day}"
 
-
-    def set_saved_fields(field_name):
-        return f"//tr[{field_name}]/td[2]"
-
     first_name = '#firstName'
     last_name = '#lastName'
     email = '#userEmail'
@@ -39,15 +35,7 @@ class PageLocators:
 
     submit = '#submit'
 
-    saved_name = set_saved_fields(1)
-    saved_email = set_saved_fields(2)
-    saved_gender = set_saved_fields(3)
-    saved_phone = set_saved_fields(4)
-    saved_birth_day = set_saved_fields(5)
-    saved_hobby = set_saved_fields(6)
-    saved_hobby_add = set_saved_fields(7)
-    saved_photo = set_saved_fields(8)
-    saved_address = set_saved_fields(9)
-    saved_state = set_saved_fields(10)
+    element_form_one = '.table'
+    element_form_two = 'td'
 
     close_form = '#closeLargeModal'

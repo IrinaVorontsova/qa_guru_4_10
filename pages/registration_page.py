@@ -81,14 +81,14 @@ class RegistrationPage:
         self.submit.perform(command.js.click)
         return
 
-
-    def accert_saved_form(self, first_name, last_name, email, gender, phone_number,
+    def assert_saved_form(self, first_name, last_name, email, gender, phone_number,
                           birth_day, birth_month, birth_year, interests, hobby,
                           photo_path, address, state, city):
-        name = first_name + " " + last_name
-        birthday = birth_day + " " + birth_month + "," + birth_year
-        state_city = state + " " + city
-        browser.element('.table').all('td').even.should(
+        name = first_name + ' ' + last_name
+        birthday = birth_day + ' ' + birth_month + ',' + birth_year
+        state_city = state + ' ' + city
+
+        browser.element(PageLocators.element_form_one).all(PageLocators.element_form_two).even.should(
             have.exact_texts(
                 name,
                 email,
