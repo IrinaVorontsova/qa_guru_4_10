@@ -81,24 +81,38 @@ class RegistrationPage:
         self.submit.perform(command.js.click)
         return
 
-    def assert_saved_form(self, first_name, last_name, email, gender, phone_number,
-                          birth_day, birth_month, birth_year, interests, hobby,
-                          photo_path, address, state, city):
-        name = first_name + ' ' + last_name
-        birthday = birth_day + ' ' + birth_month + ',' + birth_year
-        state_city = state + ' ' + city
+    def registration_user(self, user):
+        self.set_first_name(user.first_name)
+        self.set_last_name(user.last_name)
+        self.set_email(user.email)
+        self.set_gender(user.gender)
+        self.set_phone(user.phone_number)
+        self.set_date_birth()
+        self.set_hobby_one(user.interests)
+        self.set_hobby_two(user.hobby)
+        self.set_photo(user.photo_path)
+        self.set_address(user.address)
+        self.set_state(user.state)
+        self.set_city(user.city)
+        self.click_submit()
+        return
+
+    def assert_saved_form(self, user):
+        name = user.first_name + ' ' + user.last_name
+        birthday = user.birth_day + ' ' + user.birth_month + ',' + user.birth_year
+        state_city = user.state + ' ' + user.city
 
         browser.element(PageLocators.element_form_one).all(PageLocators.element_form_two).even.should(
             have.exact_texts(
                 name,
-                email,
-                gender,
-                f'{phone_number}',
+                user.email,
+                user.gender,
+                f'{user.phone_number}',
                 birthday,
-                interests,
-                hobby,
-                photo_path,
-                address,
+                user.interests,
+                user.hobby,
+                user.photo_path,
+                user.address,
                 state_city
             )
         )
